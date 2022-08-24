@@ -1,0 +1,10 @@
+.button {
+  display: inline-block;
+  width: 100px;
+  &--load-more {
+    padding: 5px;
+  }
+  &--search {
+    margin-left: 20px;
+  }
+}
