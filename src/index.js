@@ -1,10 +1,11 @@
-// Add imports above this line
-
 import { galleryItems } from './js/gallery-items';
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-// Change code below this line
+import axios from 'axios';
+
+axios.defaults.baseURL =
+  'https://pixabay.com/api/?key=29486928-40983179e54322116410ec482';
+// & q=yellow + flowers & image_type=photo & pretty=true
 
 const refs = {
   form: document.querySelector('.search-form'),
