@@ -4,10 +4,11 @@ import { galleryItems } from './js/gallery-items';
 
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-// let SimpleLightbox = require('simplelightbox');
 // Change code below this line
 
-console.log(galleryItems);
+const refs = {
+  form: document.querySelector('.search-form'),
+};
 
 const galleryListDiv = document.querySelector('.gallery');
 const cardsMarkup = createPictureCards(galleryItems);
