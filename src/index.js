@@ -25,8 +25,5 @@ function createPictureCards(galleryItems) {
 }
 
 let lightbox = new SimpleLightbox('.gallery a', {
-  // captions: true,
   captionDelay: 250,
-  // captionsData: title,
-  //   overlayOpacity: 1,
 });
