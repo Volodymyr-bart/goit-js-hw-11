@@ -2,9 +2,14 @@
   display: inline-block;
   width: 100px;
   &--load-more {
+    display: none;
     padding: 5px;
   }
   &--search {
     margin-left: 20px;
   }
+}
+
+.visible {
+  display: block;
 }
