@@ -17,6 +17,9 @@ const HITS_PER_PAGE = 40;
 let totalPages = 0;
 let isLoading = false;
 let items = [];
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
 
 const loaderOn = () => refs.loader.classList.add('visible');
 
@@ -74,10 +77,6 @@ function handleMoreSubmit() {
 refs.form.addEventListener('submit', handleSubmit);
 refs.loader.addEventListener('click', handleMoreSubmit);
 // refs.gallery.addEventListener('scroll', handleWindowScroll);
-
-let lightbox = new SimpleLightbox('.gallery a', {
-  captionDelay: 250,
-});
 
 // console.log(totalPages);
 // for (let i = 0; i < hits.length; i += 1) {
