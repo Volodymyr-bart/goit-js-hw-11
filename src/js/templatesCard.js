@@ -10,17 +10,17 @@ export default function templateInfoCard({
   return `<a class="photo-card gallery__item" href="${largeImageURL}" >
             <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy"/>
             <div class="info">
-              <p class="info-item">
-                <b>Likes</b>${likes}
+              <p class="info__item">
+                <b>Likes </b>${likes}
               </p>
-              <p class="info-item">
-                <b>Views</b>${views}
+              <p class="info__item">
+                <b>Views </b>${views}
               </p>
-              <p class="info-item">
-                <b>Comments</b>${comments}
+              <p class="info__item">
+                <b>Comments </b>${comments}
               </p>
-              <p class="info-item">
-                <b>Downloads</b>${downloads}
+              <p class="info__item">
+                <b>Downloads </b>${downloads}
               </p>
             </div>
           </a>`;

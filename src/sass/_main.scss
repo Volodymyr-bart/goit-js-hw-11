@@ -5,10 +5,10 @@
 
 .gallery {
   display: grid;
-  max-width: 1140px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-auto-rows: 240px;
-  grid-gap: 12px;
+  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 300px;
+  grid-gap: 40px;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -39,4 +39,15 @@
 
 .gallery__link:hover {
   cursor: zoom-in;
+}
+
+.info {
+  display: flex;
+  &__item {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  &__item + &__item {
+    margin-left: 10px;
+  }
 }

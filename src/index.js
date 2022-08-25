@@ -53,7 +53,6 @@ function renderList(response) {
 }
 
 function handleMoreSubmit() {
-  console.log('click');
   currentPage += 1;
   fetchSearchQuery(query, currentPage).then(response => renderList(response));
 }
