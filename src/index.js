@@ -42,6 +42,9 @@ const handleSubmit = e => {
       } else {
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
         renderList(hits);
+        lightbox = new SimpleLightbox('.gallery a', {
+          captionDelay: 250,
+        });
       }
     })
     .catch(error => console.log(error));
@@ -51,9 +54,6 @@ function renderList(hits) {
   loaderOn();
   const templates = hits.map(hit => templateInfoCard(hit)).join('');
   refs.gallery.insertAdjacentHTML(`beforeend`, templates);
-  lightbox = new SimpleLightbox('.gallery a', {
-    captionDelay: 250,
-  });
 }
 
 function handleMoreSubmit() {
@@ -69,6 +69,7 @@ function handleMoreSubmit() {
       loaderOff();
     }
     renderList(hits);
+    lightbox.refresh();
   });
 }
 
