@@ -4,6 +4,7 @@
   &--load-more {
     display: none;
     padding: 5px;
+    margin-top: 40px;
   }
   &--search {
     margin-left: 20px;
@@ -12,4 +13,6 @@
 
 .visible {
   display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
