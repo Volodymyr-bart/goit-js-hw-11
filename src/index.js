@@ -17,9 +17,7 @@ const HITS_PER_PAGE = 40;
 let totalPages = 0;
 let isLoading = false;
 let items = [];
-let lightbox = new SimpleLightbox('.gallery a', {
-  captionDelay: 250,
-});
+let lightbox;
 
 const loaderOn = () => refs.loader.classList.add('visible');
 
@@ -34,12 +32,6 @@ const handleSubmit = e => {
     .then(response => {
       renderList(response);
       loaderOn();
-      // const {
-      //   data: { hits, totalHits },
-      // } = response;
-      // items = hits;
-      // totalPages = totalHits / hits.length;
-      // renderList(hits);
     })
     .catch(error => console.log(error));
 };
@@ -53,6 +45,9 @@ function renderList(response) {
   totalPages = totalHits / hits.length;
   const templates = items.map(hit => templateInfoCard(hit)).join('');
   refs.gallery.insertAdjacentHTML(`beforeend`, templates);
+  lightbox = new SimpleLightbox('.gallery a', {
+    captionDelay: 250,
+  });
 }
 
 function handleMoreSubmit() {
