@@ -13,11 +13,10 @@ const refs = {
 
 // let it ems = [];
 let query = null;
-let currentPage = 1;
-const HITS_PER_PAGE = 40;
-let totalPages = 0;
-let isLoading = false;
 
+const HITS_PER_PAGE = 40;
+let totalPages = null;
+let currentPage = null;
 let lightbox;
 
 const loaderOn = () => refs.loader.classList.add('visible');
@@ -29,16 +28,25 @@ const handleSubmit = e => {
   e.preventDefault();
   refs.gallery.innerHTML = ``;
   query = e.target.search.value;
+  currentPage = 1;
   fetchSearchQuery(query, currentPage)
     .then(response => {
       const {
         data: { hits, totalHits },
       } = response;
+      totalPages = Math.ceil(totalHits / hits.length);
       if (hits.length === 0) {
         Notiflix.Notify.failure(
           `Sorry, there are no images matching your search query. Please try again.`
         );
         return;
+      } else if (hits.length < 40) {
+        Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+        renderList(hits);
+        loaderOff();
       } else {
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
         renderList(hits);
@@ -58,19 +66,35 @@ function renderList(hits) {
 
 function handleMoreSubmit() {
   currentPage += 1;
-  fetchSearchQuery(query, currentPage).then(response => {
-    const {
-      data: { hits },
-    } = response;
-    if (hits.length < 40) {
-      Notiflix.Notify.info(
-        "We're sorry, but you've reached the end of search results."
-      );
-      loaderOff();
-    }
-    renderList(hits);
-    lightbox.refresh();
-  });
+  console.log();
+  // if (currentPage + 1 === totalPages) {
+  //   Notiflix.Notify.info(
+  //     "We're sorry, but you've reached the end of search results."
+  //   );
+  //   loaderOff();
+  // }
+  // else
+  // {
+  fetchSearchQuery(query, currentPage)
+    .then(response => {
+      const {
+        data: { hits },
+      } = response;
+      console.log(currentPage);
+      console.log(totalPages);
+      if (hits.length < 40 && currentPage === totalPages) {
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+        loaderOff();
+      }
+      renderList(hits);
+      lightbox.refresh();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  // }
 }
 
 refs.form.addEventListener('submit', handleSubmit);
