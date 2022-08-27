@@ -50,6 +50,7 @@ const handleSubmit = e => {
       } else {
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
         renderList(hits);
+        loaderOn();
         lightbox = new SimpleLightbox('.gallery a', {
           captionDelay: 250,
         });
@@ -59,7 +60,7 @@ const handleSubmit = e => {
 };
 
 function renderList(hits) {
-  loaderOn();
+  // loaderOn();
   const templates = hits.map(hit => templateInfoCard(hit)).join('');
   refs.gallery.insertAdjacentHTML(`beforeend`, templates);
 }
@@ -80,8 +81,6 @@ function handleMoreSubmit() {
       const {
         data: { hits },
       } = response;
-      console.log(currentPage);
-      console.log(totalPages);
       if (hits.length < 40 && currentPage === totalPages) {
         Notiflix.Notify.info(
           "We're sorry, but you've reached the end of search results."
