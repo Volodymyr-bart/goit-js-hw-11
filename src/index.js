@@ -60,22 +60,12 @@ const handleSubmit = e => {
 };
 
 function renderList(hits) {
-  // loaderOn();
   const templates = hits.map(hit => templateInfoCard(hit)).join('');
   refs.gallery.insertAdjacentHTML(`beforeend`, templates);
 }
 
 function handleMoreSubmit() {
   currentPage += 1;
-  console.log();
-  // if (currentPage + 1 === totalPages) {
-  //   Notiflix.Notify.info(
-  //     "We're sorry, but you've reached the end of search results."
-  //   );
-  //   loaderOff();
-  // }
-  // else
-  // {
   fetchSearchQuery(query, currentPage)
     .then(response => {
       const {
