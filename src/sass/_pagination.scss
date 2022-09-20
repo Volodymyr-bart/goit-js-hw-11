@@ -1,0 +1,17 @@
+.pagination {
+  margin-top: 100px;
+  list-style: none;
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 100px;
+  &__item {
+    padding: 5px;
+    background-color: beige;
+    border-radius: 5px;
+  }
+  &__item:hover {
+    background: red;
+    cursor: pointer;
+  }
+}

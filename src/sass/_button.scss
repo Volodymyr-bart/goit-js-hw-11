@@ -11,6 +11,26 @@
   }
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.pagination__item {
+  margin-left: 20px;
+}
+.pagination-list {
+  display: flex;
+  flex-direction: row;
+  &__item + &__item {
+    margin-left: 20px;
+  }
+}
+
+.hidenn {
+  display: none;
+}
+
 .visible {
   display: block;
   margin-right: auto;
