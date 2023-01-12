@@ -22,8 +22,10 @@ let totalPages = null;
 let currentPage = null;
 let lightbox;
 
+// const loaderOn = () => refs.loader.classList.add('visible');
 const loaderOn = () => refs.loader.classList.add('visible');
 
+// const loaderOff = () => refs.loader.classList.remove('visible');
 const loaderOff = () => refs.loader.classList.remove('visible');
 loaderOff();
 
@@ -69,10 +71,15 @@ const handleSubmit = e => {
     })
     .catch(error => console.log(error));
 };
+// this code use with handle more submit
+// function renderList(hits) {
+//   const templates = hits.map(hit => templateInfoCard(hit)).join('');
+//   refs.gallery.insertAdjacentHTML(`beforeend`, templates);
+// }
 
 function renderList(hits) {
   const templates = hits.map(hit => templateInfoCard(hit)).join('');
-  refs.gallery.insertAdjacentHTML(`beforeend`, templates);
+  refs.gallery.innerHTML = templates;
 }
 // ----------------------------------
 function handleMoreSubmit() {
